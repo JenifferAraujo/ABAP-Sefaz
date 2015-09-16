@@ -1,6 +1,4 @@
-REPORT ZTESTE1.
-
-TYPE-POOLS: slis.
+REPORT ZSEFAZ.
 
 DATA: l_url               TYPE string,
       l_params_string     TYPE string,

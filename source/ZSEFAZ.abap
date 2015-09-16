@@ -1,25 +1,27 @@
 REPORT ZSEFAZ.
 
-DATA: l_url               TYPE string,
-      l_params_string     TYPE string,
-      l_http_client       TYPE REF TO if_http_client,
-      l_params_xstring    TYPE xstring,
-      l_xstring           TYPE xstring,
-      l_message           TYPE string,
-      l_subrc             TYPE sy-subrc,
-      v_msg(50)           TYPE c,
-      t_xml_info          TYPE TABLE OF smum_xmltb INITIAL SIZE 0,
-      wa_xml_info         LIKE LINE OF t_xml_info,
-      t_return            TYPE STANDARD TABLE OF bapiret2,
-      wa_return           LIKE LINE OF t_return,
-      v_status(40)		    TYPE c.
+TABLES lfa1.
+
+DATA: l_url             TYPE string,
+      l_params_string   TYPE string,
+      l_http_client     TYPE REF TO if_http_client,
+      l_params_xstring  TYPE xstring,
+      l_xstring         TYPE xstring,
+      l_message         TYPE string,
+      l_subrc           TYPE sy-subrc,
+      v_msg(50)         TYPE c,
+      t_xml_info        TYPE TABLE OF smum_xmltb INITIAL SIZE 0,
+      wa_xml_info       LIKE LINE OF t_xml_info,
+      t_return          TYPE STANDARD TABLE OF bapiret2,
+      wa_return         LIKE LINE OF t_return,
+      v_status(40)      TYPE c.
 
 SELECTION-SCREEN BEGIN OF BLOCK b1.
-  PARAMETERS: p_stcd1     LIKE lfa1-stcd1,
-              p_stcd2     LIKE lfa1-stcd2,
-              p_stcd3     LIKE lfa1-stcd3,
-              p_cpf(11)   TYPE c,
-              p_senha(10) TYPE c.
+  PARAMETERS: p_stcd1         LIKE lfa1-stcd1, "CNPJ do contribuinte a ser consultado
+              p_stcd2         LIKE lfa1-stcd2, "CPF do contribuinte a ser consultado
+              p_stcd3         LIKE lfa1-stcd3, "Inscrição estadual do contribuinte a ser consultado
+              p_cpf(11)       TYPE c, "CPF do usuário no SEFAZ para autenticação do WebService
+              p_senha(10)     TYPE c. "Senha do usuário no SEFAZ para autenticação do WebService
 SELECTION-SCREEN END OF BLOCK b1.
 
 START-OF-SELECTION.
